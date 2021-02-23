@@ -14,5 +14,6 @@
 </head>
 <body>
     <h1>ZZCommerce!</h1>
+    <a type="button" class="btn btn-danger" href="${pageContext.servletContext.contextPath}/view/produto/register.jsp">Adicionar um Produto</a>
 </body>
 </html>

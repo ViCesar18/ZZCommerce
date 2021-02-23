@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="inputSenhaConfirmacao">Comfirme sua Senha</label>
+                    <label for="inputSenhaConfirmacao">Confirme sua Senha</label>
                     <input type="password" required class="form-control .password-confirm" id="inputSenhaConfirmacao" name="senhaConfirmacao">
                     <p class="help-block" style="color: red"></p>
                 </div>
