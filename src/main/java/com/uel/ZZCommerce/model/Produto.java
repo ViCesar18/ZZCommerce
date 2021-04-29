@@ -9,12 +9,6 @@ public class Produto {
     private int quantidade;
     private int idContato;
 
-    public Produto (String nome, double precoVenda, int quantidade){
-        this.nome = nome;
-        this.precoVenda = precoVenda;
-        this.quantidade = quantidade;
-    }
-
     public int getId() {
         return id;
     }

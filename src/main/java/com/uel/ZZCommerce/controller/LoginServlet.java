@@ -39,9 +39,10 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("message", message);
                 destPage = "index.jsp";
             }
-             
-            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
-            dispatcher.forward(request, response);
+
+            response.sendRedirect(request.getContextPath() + "/allProduto");
+            //RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
+            //dispatcher.forward(request, response);
              
         } catch (SQLException | ClassNotFoundException ex) {
             throw new ServletException(ex);
