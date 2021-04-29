@@ -17,7 +17,7 @@
                         <p>Faça seu cadastro, entre na plataforma e comercialize seus produtos!</p>
                     <div>
                         <i class="fas fa-arrow-left" style="color: #2C88D9"></i>
-                        <a type="button" class="btn btn-danger" href="${pageContext.servletContext.contextPath}/">Voltar para Login</a>
+                        <a type="button" href="${pageContext.servletContext.contextPath}/">Voltar para Login</a>
                     </div>
                 </section>
                 <form

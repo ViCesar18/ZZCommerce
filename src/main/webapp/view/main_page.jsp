@@ -8,12 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <meta charset="utf-8">
     <title>Página Inicial</title>
 </head>
 <body>
-    <h1>ZZCommerce!</h1>
-    <a type="button" class="btn btn-danger" href="${pageContext.servletContext.contextPath}/view/produto/register.jsp">Adicionar um Produto</a>
+    <div class="logon-container">
+        <h1>ZZCommerce!</h1>
+        <a type="button" class="btn btn-danger" href="${pageContext.servletContext.contextPath}/view/produto/register.jsp">Adicionar um Produto</a>
+    </div>
 </body>
 </html>
