@@ -1,0 +1,85 @@
+.register-product-container {
+    width: 100%;
+    max-width: 1120px;
+    height: 95vh;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Calibri;
+}
+
+.register-product-container .content {
+    width: 100%;
+    padding: 56px 96px;
+    background: #f0f0f5;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.register-product-container .content section {
+    width: 100%;
+    max-width: 380px;
+}
+
+.register-product-container .content section img {
+    width: 100%;
+}
+
+.register-product-container .content section h1 {
+    margin: 0px 0 32px;
+    font-size: 32px;
+}
+
+.register-product-container .content section p {
+    font-size: 18px;
+    color: #737380;
+    line-height: 32px;
+}
+
+.register-product-container .content section a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.register-product-container .content form {
+    width: 100%;
+    max-width: 450px;
+}
+
+.register-product-container .content form .form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 0px;
+}
+
+.register-product-container .content form input {
+    height: 40px;
+    width: 100%;
+    padding-left: 8px;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+}
+
+.register-product-container .content .buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-product-container .content .buttons button{
+    background-color: #F57000;
+    color: white;
+    height: 50px;
+    font-size: 22px;
+    border-radius: 8px;
+    border-style: none;
+}

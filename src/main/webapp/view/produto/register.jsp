@@ -2,84 +2,46 @@
          pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../../assets/css/anunciar-produto.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <title>Anunciar Produto</title>
+    </head>
+    <body>
+        <div class="register-product-container">
+            <div class="content">
+                <section>
+                    <image src="../../assets/img/zz-logo.png"/>
+                    <h1>Anuncie um produto!</h1>
+                    <p>Cadastre um produto e aguarde alguém interessado entrar em contato!</p>
+                    <div>
+                        <i class="fas fa-arrow-left" style="color: #2C88D9"></i>
+                        <a type="button" href="${pageContext.servletContext.contextPath}/view/main_page.jsp">Voltar para Home</a>
+                    </div>
+                </section>
+                <form
+                        class="form"
+                        action="${pageContext.servletContext.contextPath}/registerProduto"
+                        method="post"
+                >
+                    <div class="form-group">
+                        <input type="text" placeholder="Nome" required class="form-control" id="inputNome" name="nome">
+                    </div>
 
-    <meta charset="utf-8">
+                    <div class="form-group">
+                        <input type="number" step="0.01" placeholder="Preço" required class="form-control" id="inputPreco" name="preco">
+                    </div>
 
-    <script
-            src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous">
-    </script>
-    <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
-    </script>
+                    <div class="form-group">
+                        <input type="number" placeholder="Quantidade" required class="form-control" id="inputQuantidade" name="quantidade">
+                    </div>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $("#loginForm").validate({
-                rules: {
-                    username: {
-                        required: true,
-                        username: true
-                    },
-
-                    password: "required",
-                },
-
-                messages: {
-                    username: {
-                        required: "Please enter email",
-                        username: "Please enter a valid email address"
-                    },
-
-                    password: "Please enter password"
-                }
-            });
-
-        });
-    </script>
-
-    <script>
-        function myFunction() {
-            alert("I am an alert box!");
-        }
-    </script>
-
-    <title>Adicionar Produto</title>
-</head>
-<body>
-<div class="container">
-    <div style="display: flex; flex-direction: row">
-        <h1>Adicione um Produto!</h1>
-    </div>
-    <form
-            class="form"
-            action="${pageContext.servletContext.contextPath}/registerProduto"
-            method="post"
-    >
-        <div class="form-group">
-            <label for="inputNome">Nome</label>
-            <input type="text" required class="form-control" id="inputNome" name="nome">
+                    <div class="buttons">
+                        <button type="submit" class="btn btn-primary">Adicionar Produto</button>
+                    </div>
+                </form>
+            </div>
         </div>
-
-        <div class="form-group">
-            <label for="inputPreco">Preço</label>
-            <input type="number" step="0.01" required class="form-control" id="inputPreco" name="preco">
-        </div>
-
-        <div class="form-group">
-            <label for="inputQuantidade">Quantidade</label>
-            <input type="number" required class="form-control" id="inputQuantidade" name="quantidade">
-        </div>
-
-
-        <button type="submit" class="btn btn-primary">Adicionar Produto</button>
-        <a type="button" class="btn btn-danger" href="${pageContext.servletContext.contextPath}/view/main_page.jsp">Voltar</a>
-    </form>
-</div>
-<script src="../../assets/js/usuario.js"/>
-</body>
+    </body>
 </html>
