@@ -102,7 +102,7 @@
               }
             }
 
-            senha.onchange = verificarSenha;
+            senha.onkeyup = verificarSenha;
             confSenha.onkeyup = verificarSenha;
         </script>
     </body>
