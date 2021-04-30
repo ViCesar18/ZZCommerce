@@ -47,7 +47,7 @@
             <ul>
                 <c:forEach var="produto" items="${requestScope.produtos}">
                     <li>
-                        <img src="${pageContext.request.contextPath}/assets/img/${produto.imagem != null ? produto.imagem : "default-product-image.png"}">
+                        <img src="${pageContext.request.contextPath}/assets/img/produtos/${produto.imagem != null ? produto.imagem : "default-product-image.png"}">
                         <strong class="titulo-produto">${produto.nome}</strong>
                         <p><strong>Vinícius Cesar</strong></p>
                         <p>R$${produto.precoVenda}</p>
