@@ -7,66 +7,58 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>Página Inicial</title>
-</head>
-<body>
-    <h1>ZZCommerce!</h1>
-    <a type="button" class="btn btn-danger" href="${pageContext.servletContext.contextPath}/view/produto/register.jsp">Adicionar um Produto</a>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="${pageContext.servletContext.contextPath}/assets/css/main.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <title>Página Inicial</title>
+    </head>
+    <body>
+        <div class="main-container">
+            <header>
+                <a href="${pageContext.servletContext.contextPath}/allProduto">
+                    <img src="${pageContext.servletContext.contextPath}/assets/img/zz-logo.png">
+                </a>
+                <span><strong>Olá, ${loggedInUser.username}!</strong></span>
 
-    <div class="container">
-        <p><strong>Encontre seu produto</strong></p>
-        <form
-                class="form"
-                action="${pageContext.servletContext.contextPath}/pesquisa"
-                method="post"
-        >
-            <div class="form-group">
-                <input type="text" required class="form-control" id="inputPesquisa" name="pesquisa">
+                <a type="button" class="anunciar" href="${pageContext.servletContext.contextPath}/view/produto/register.jsp">Anunciar um Produto</a>
+                <a type="button" class="rect-button" id="cart" href="#">
+                    <i class="fas fa-shopping-cart" style="color: limegreen"></i>
+                </a>
+                <a type="button" class="rect-button" id="logoff" href="#">
+                    <i class="fas fa-power-off" style="color: #F57000"></i>
+                </a>
+            </header>
+
+            <div class="barra-pesquisa">
+                <h1>Encontre seu produto</h1>
+                <form
+                        class="form"
+                        action="${pageContext.servletContext.contextPath}/pesquisa"
+                        method="post"
+                >
+                    <input type="text" placeholder="Procure produtos de seu interesse..." required class="form-control" id="inputPesquisa" name="pesquisa">
+                    <button type="submit">Pesquisar</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-primary">Pesquisar</button>
-        </form>
-    </div>
-    <div class="container">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th class="col h4">ID</th>
-                <th class="col h4">Nome</th>
-                <th class="col h4">Preço</th>
-                <th class="col h4">Quantidade disponível</th>
-                <th class="col h4">Anunciante</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="produto" items="${requestScope.produtos}">
-                <tr>
-                    <td>
-                        <span class="h4"><c:out value="${produto.id}"/></span>
-                    </td>
 
-                    <td>
-                        <p class="h4"><c:out value="${produto.nome}"/></p>
-                    </td>
-
-                    <td>
-                        <p class="h4"><c:out value="${produto.precoVenda}"/></p>
-                    </td>
-
-                    <td>
-                        <p class="h4"><c:out value="${produto.quantidade}"/></p>
-                    </td>
-
-                    <td>
-                        <p class="h4"><c:out value="${produto.idContato}"/></p>
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </div>
-</body>
+            <ul>
+                <c:forEach var="produto" items="${requestScope.produtos}">
+                    <li>
+                        <img src="${pageContext.request.contextPath}/assets/img/${produto.imagem != null ? produto.imagem : "default-product-image.png"}">
+                        <strong class="titulo-produto">${produto.nome}</strong>
+                        <p><strong>Vinícius Cesar</strong></p>
+                        <p>R$${produto.precoVenda}</p>
+                        <a type="button" style="background-color: limegreen; margin-bottom: 5px" href="#">
+                            <i class="fas fa-shopping-cart" style="color: white; margin-right: 5px"></i>
+                            Carrinho
+                        </a>
+                        <a type="button" href="#">Ver Produto</a>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+    </body>
 </html>

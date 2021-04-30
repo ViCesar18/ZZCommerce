@@ -49,6 +49,10 @@
     font-size: 20px;
 }
 
+.register-product-container .content section a:hover {
+    opacity: 0.7;
+}
+
 .register-product-container .content form {
     width: 100%;
     max-width: 450px;
@@ -82,4 +86,8 @@
     font-size: 22px;
     border-radius: 8px;
     border-style: none;
+}
+
+.register-product-container .content .buttons button:hover{
+    opacity: 0.8;
 }

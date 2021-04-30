@@ -8,6 +8,7 @@ public class Produto {
     private double precoVenda;
     private int quantidade;
     private int idContato;
+    private String imagem;
 
     public int getId() {
         return id;
@@ -47,5 +48,13 @@ public class Produto {
 
     public void setIdContato(int idContato) {
         this.idContato = idContato;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

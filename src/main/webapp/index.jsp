@@ -6,9 +6,6 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="./assets/css/logon.css">
         <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-        <script type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js">
-        </script>
         <title>Login</title>
     </head>
     <body>
@@ -33,8 +30,10 @@
                         <div class="buttons">
                             <button type="submit" class="btn btn-primary">Entrar</button>
                             <div class="link">
-                                <i class="fas fa-sign-in-alt" style="color: #2C88D9"></i>
-                                <a href="view/contato/register.jsp">Criar Conta</a>
+                                <a href="view/contato/register.jsp">
+                                    <i class="fas fa-sign-in-alt" style="color: #2C88D9"></i>
+                                    Criar Conta
+                                </a>
                             </div>
                         </div>
                     </form>

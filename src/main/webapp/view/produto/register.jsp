@@ -16,8 +16,10 @@
                     <h1>Anuncie um produto!</h1>
                     <p>Cadastre um produto e aguarde alguém interessado entrar em contato!</p>
                     <div>
-                        <i class="fas fa-arrow-left" style="color: #2C88D9"></i>
-                        <a type="button" href="${pageContext.servletContext.contextPath}/view/main_page.jsp">Voltar para Home</a>
+                        <a type="button" href="${pageContext.servletContext.contextPath}/view/main_page.jsp">
+                            <i class="fas fa-arrow-left" style="color: #2C88D9"></i>
+                            Voltar para Home
+                        </a>
                     </div>
                 </section>
                 <form
