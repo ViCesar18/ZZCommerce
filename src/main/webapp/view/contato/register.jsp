@@ -36,9 +36,10 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="password" placeholder="Confirmação de Senha" required class="form-control .password-confirm" id="inputSenhaConfirmacao" name="senhaConfirmacao">
-
+                        <input type="password" placeholder="Confirmação de Senha" required class="form-control password-confirm" id="inputSenhaConfirmacao" name="senhaConfirmacao">
                     </div>
+
+                    <p id="mensagem-senha" style="color: red" hidden>As senhas devem ser iguais!</p>
 
                     <div class="form-group">
                         <input type="text" placeholder="Nome" required class="form-control" id="inputNome" name="nome">
@@ -77,11 +78,32 @@
                     </div>
 
                     <div class="buttons">
-                        <button type="submit" class="btn btn-primary">Criar Conta</button>
+                        <button type="submit" id="botao">Criar Conta</button>
                     </div>
                 </form>
             </div>
         </div>
-    <script src="../../assets/js/usuario.js"/>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script>
+            var senha = document.getElementById("inputSenha")
+            var confSenha = document.getElementById("inputSenhaConfirmacao")
+
+            function verificarSenha(){
+              if(senha.value !== confSenha.value) {
+                senha.classList.add('has-error')
+                confSenha.classList.add('has-error')
+                document.getElementById("botao").setAttribute("disabled", "disabled")
+                document.getElementById("mensagem-senha").removeAttribute("hidden")
+              } else {
+                senha.classList.remove('has-error')
+                confSenha.classList.remove('has-error')
+                document.getElementById("botao").removeAttribute("disabled")
+                document.getElementById("mensagem-senha").setAttribute("hidden", "hidden")
+              }
+            }
+
+            senha.onchange = verificarSenha;
+            confSenha.onkeyup = verificarSenha;
+        </script>
     </body>
 </html>

@@ -70,8 +70,14 @@
     width: 100%;
     padding-left: 8px;
     border-radius: 8px;
-    border-style: none;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+    border-style: none;
+}
+
+.register-container .content form .has-error {
+    border-color: red;
+    border-width: 2px;
+    border-style: solid;
 }
 
 .register-container .content .buttons {
