@@ -136,22 +136,25 @@ public class ProdutoServlet extends HttpServlet {
         String servletPath = request.getServletPath();
         ProdutoDAO produtoDAO = new ProdutoDAO();
         RequestDispatcher dispatcher;
+        HttpSession session = request.getSession();
 
         switch(servletPath){
             case "/allProduto":{
-                try {
-                    List<Produto> produtos = produtoDAO.allProduto();
-                    for (Produto p: produtos){
+                if(session.getAttribute("loggedInUser") != null) {
+                    try {
+                        List<Produto> produtos = produtoDAO.allProduto();
 
+                        request.setAttribute("produtos", produtos);
+
+                        dispatcher = request.getRequestDispatcher("view/main_page.jsp");
+                        dispatcher.forward(request, response);
+
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
                     }
-
-                    request.setAttribute("produtos", produtos);
-
-                    dispatcher = request.getRequestDispatcher("view/main_page.jsp");
+                } else {
+                    dispatcher = request.getRequestDispatcher("index.jsp");
                     dispatcher.forward(request, response);
-
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
                 }
             }
         }

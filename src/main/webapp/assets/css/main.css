@@ -114,7 +114,7 @@ body {
 .main-container ul {
     padding: 0px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /*Duas colunas de tamanho 1fr*/
+    grid-template-columns: repeat(4, 1fr); /*Duas colunas de tamanho 1fr*/
     grid-gap: 24px; /*Espaçamento entre os itens da lista*/
     list-style: none;
 }
@@ -127,6 +127,8 @@ body {
 
 .main-container ul li img {
     width: 100%;
+    height: 200px;
+    object-fit: contain;
 }
 
 .main-container ul li .titulo-produto {
