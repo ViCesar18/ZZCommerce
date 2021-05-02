@@ -26,6 +26,7 @@
                         class="form"
                         action="${pageContext.servletContext.contextPath}/registerProduto"
                         method="post"
+                        enctype="multipart/form-data"
                 >
                     <div class="form-group">
                         <input type="text" placeholder="Nome" required class="form-control" id="inputNome" name="nome">
@@ -37,6 +38,11 @@
 
                     <div class="form-group">
                         <input type="number" placeholder="Quantidade" required class="form-control" id="inputQuantidade" name="quantidade">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputImagem"><b>Foto do produto</b></label>
+                        <input type="file" class="form-control-file" id="inputImagem" name="imagem">
                     </div>
 
                     <div class="buttons">

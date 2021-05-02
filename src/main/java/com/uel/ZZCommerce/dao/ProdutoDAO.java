@@ -18,7 +18,7 @@ public class ProdutoDAO {
     }
 
     public boolean registerProduto (Produto produto) {
-        String sql = "INSERT INTO produto (NOME, PRECOVENDA, QUANTIDADE, ID_CONTATO) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO produto (NOME, PRECOVENDA, QUANTIDADE, ID_CONTATO, IMAGEM) VALUES (?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -27,6 +27,7 @@ public class ProdutoDAO {
             statement.setString(2, Double.toString(produto.getPrecoVenda()));
             statement.setString(3, Integer.toString(produto.getQuantidade()));
             statement.setString(4, Integer.toString(produto.getIdContato()  ));
+            statement.setString(5, produto.getImagem());
 
             statement.execute();
 
@@ -41,7 +42,7 @@ public class ProdutoDAO {
 
     public List<Produto> allProduto () throws SQLException{
         List<Produto> produtos = new ArrayList<>();
-        String sql = "SELECT id, nome, precovenda, quantidade, id_contato FROM commerce.produto ORDER BY id";
+        String sql = "SELECT id, nome, precovenda, quantidade, id_contato, imagem FROM commerce.produto ORDER BY id";
 
         try (PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery()) {
@@ -51,7 +52,9 @@ public class ProdutoDAO {
                     produto.setId(result.getInt("id"));
                     produto.setNome(result.getString("nome"));
                     produto.setPrecoVenda(result.getDouble("precovenda"));
+                    produto.setQuantidade(result.getInt("quantidade"));
                     produto.setIdContato(result.getInt("id_contato"));
+                    produto.setImagem(result.getString("imagem"));
 
 
                     produtos.add(produto);
