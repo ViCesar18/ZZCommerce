@@ -47,7 +47,7 @@ private Connection connection;
 			PreparedStatement statement = connection.prepareStatement(sql);
 			
 			statement.setString(1, contato.getUsername());
-	        statement.setString(2, contato.getPassword());
+			statement.setString(2, contato.getPassword());
 			statement.setString(3, contato.getNome());
 			statement.setString(4, contato.getApelido());
 			statement.setString(5, contato.getEmpresa());
@@ -66,6 +66,6 @@ private Connection connection;
 			throw new RuntimeException(e);
 		}
 		
-        return true;
+		return true;
 	}
 }

@@ -17,7 +17,7 @@ public class RegisterServlet extends HttpServlet {
         super();
     }
  
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Contato contato = new Contato(
                 request.getParameter("username"),
                 request.getParameter("senha"),
@@ -36,28 +36,24 @@ public class RegisterServlet extends HttpServlet {
         if(contatoDao.register(contato)) {
         	String destPage = "index.jsp";
             
-            String message = "Registered successfully, now login";
-            request.setAttribute("message2", message);
+            String message = "Cadastro executado com sucesso!";
+            request.setAttribute("mensagemSucesso", message);
             
-            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
-            dispatcher.forward(request, response);
-            
-            try {
-            	Thread.sleep (3000); 
+            if(request.getParameter("Test") == null) {
+                RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
+                dispatcher.forward(request, response);
             }
-            catch (InterruptedException e) {
-            	throw new ServletException(e);
-            }
-         
         }
         else {
         	String destPage = "register.jsp";
         	
-        	String message = "An error has happened, please try again";
-            request.setAttribute("message2", message);
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
-            dispatcher.forward(request, response);
+        	String message = "Cadastro falhou, verifique os dados!";
+            request.setAttribute("mensagemFalha", message);
+
+            if(request.getParameter("Test") == null) {
+                RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
+                dispatcher.forward(request, response);
+            }
         }
     }
 }
