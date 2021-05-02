@@ -27,7 +27,7 @@
                 <a type="button" class="rect-button" id="cart" href="#">
                     <i class="fas fa-shopping-cart" style="color: limegreen"></i>
                 </a>
-                <a type="button" class="rect-button" id="logoff" href="#">
+                <a type="button" class="rect-button" id="logoff" href="${pageContext.servletContext.contextPath}/logout">
                     <i class="fas fa-power-off" style="color: #F57000"></i>
                 </a>
             </header>
@@ -49,7 +49,7 @@
                     <li>
                         <img src="${pageContext.request.contextPath}/assets/img/produtos/${produto.imagem != null ? produto.imagem : "default-product-image.png"}">
                         <strong class="titulo-produto">${produto.nome}</strong>
-                        <p><strong>Vinícius Cesar</strong></p>
+                        <p><strong>${produto.contato.nome}</strong></p>
                         <p>R$${produto.precoVenda}</p>
                         <a type="button" style="background-color: limegreen; margin-bottom: 5px" href="#">
                             <i class="fas fa-shopping-cart" style="color: white; margin-right: 5px"></i>

@@ -128,37 +128,6 @@ public class ProdutoServlet extends HttpServlet {
                     RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
                     dispatcher.forward(request, response);
                 }
-                /*
-
-
-                HttpSession session = request.getSession();
-
-
-                ProdutoDAO produtoDAO = new ProdutoDAO();
-
-                if (produtoDAO.registerProduto(produto)){
-                    String destPage = "view/main_page.jsp";
-
-                    String message = "Produto adicionado com sucesso";
-
-                    response.sendRedirect(request.getContextPath() + "/allProduto");
-
-                    try {
-                        Thread.sleep (3000);
-                    }
-                    catch (InterruptedException e) {
-                        throw new ServletException(e);
-                    }
-
-                }else{
-                    String destPage = "register.jsp";
-
-                    String message = "An error has happened, please try again";
-
-                    RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
-                    dispatcher.forward(request, response);
-                }
-                 */
             }
         }
     }
@@ -172,6 +141,9 @@ public class ProdutoServlet extends HttpServlet {
             case "/allProduto":{
                 try {
                     List<Produto> produtos = produtoDAO.allProduto();
+                    for (Produto p: produtos){
+
+                    }
 
                     request.setAttribute("produtos", produtos);
 

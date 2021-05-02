@@ -1,7 +1,5 @@
 package com.uel.ZZCommerce.model;
 
-import javax.servlet.http.HttpSession;
-
 public class Produto {
     private int id;
     private String nome;
@@ -9,6 +7,15 @@ public class Produto {
     private int quantidade;
     private int idContato;
     private String imagem;
+    private Contato contato;
+
+    public Contato getContato() {
+        return contato;
+    }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
 
     public int getId() {
         return id;

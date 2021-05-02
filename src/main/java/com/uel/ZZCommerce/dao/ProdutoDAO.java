@@ -1,6 +1,7 @@
 package com.uel.ZZCommerce.dao;
 
 import com.uel.ZZCommerce.jdbc.ConnectionFactory;
+import com.uel.ZZCommerce.model.Contato;
 import com.uel.ZZCommerce.model.Produto;
 
 import java.sql.*;
@@ -42,12 +43,18 @@ public class ProdutoDAO {
 
     public List<Produto> allProduto () throws SQLException{
         List<Produto> produtos = new ArrayList<>();
-        String sql = "SELECT id, nome, precovenda, quantidade, id_contato, imagem FROM commerce.produto ORDER BY id";
+        String sql = "SELECT produto.id, produto.nome, precovenda, quantidade, id_contato, imagem, contato.nome as nome_contato " +
+                "FROM commerce.produto " +
+                "JOIN commerce.contato ON contato.id = produto.id_contato " +
+                "ORDER BY id";
 
         try (PreparedStatement statement = connection.prepareStatement(sql);
             ResultSet result = statement.executeQuery()) {
                 while(result.next()) {
                     Produto produto = new Produto();
+                    Contato contato = new Contato();
+
+                    contato.setNome(result.getString("nome_contato"));
 
                     produto.setId(result.getInt("id"));
                     produto.setNome(result.getString("nome"));
@@ -55,6 +62,7 @@ public class ProdutoDAO {
                     produto.setQuantidade(result.getInt("quantidade"));
                     produto.setIdContato(result.getInt("id_contato"));
                     produto.setImagem(result.getString("imagem"));
+                    produto.setContato(contato);
 
 
                     produtos.add(produto);
