@@ -14,7 +14,7 @@ public class ConnectionFactory {
 					"jdbc:mysql://localhost:3306/"
 					+ "commerce?useTimezone=true&serverTimezone=America/"
 					+ "Sao_Paulo", 
-					"claudio", "1234");
+					"vicesar18", "8468");
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

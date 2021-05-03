@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
         super();
     }
  
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         switch(request.getServletPath()){
             case "/login":{
                 Contato contato = new Contato(request.getParameter("username"), request.getParameter("password"));
@@ -33,25 +33,19 @@ public class LoginServlet extends HttpServlet {
 
                 try {
                     contato = contatoDao.checkLogin(contato);
-                    String destPage;
 
                     if (contato.getId() != 0) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("loggedInUser", contato);
-                        session.setAttribute("username", contato.getUsername());
-                        session.removeAttribute("message2");
-                        session.removeAttribute("message1");
-                        destPage = "view/main_page.jsp";
+                        if(request.getParameter("Test") == null) {
+                            HttpSession session = request.getSession();
+                            session.setAttribute("loggedInUser", contato);
+                            session.setAttribute("username", contato.getUsername());
+                        }
+                        request.setAttribute("messagemSucesso", "Usuário logado com sucesso!");
                     } else {
-                        String message = "Invalid email/password";
-                        request.setAttribute("message", message);
-                        destPage = "index.jsp";
+                        request.setAttribute("messagemFalha", "Usuário ou Senha inválidos!");
                     }
 
                     response.sendRedirect(request.getContextPath() + "/allProduto");
-                    //RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
-                    //dispatcher.forward(request, response);
-
                 } catch (SQLException | ClassNotFoundException ex) {
                     throw new ServletException(ex);
                 }
@@ -59,7 +53,7 @@ public class LoginServlet extends HttpServlet {
         }
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         switch (request.getServletPath()){
             case "/logout":{
@@ -71,6 +65,4 @@ public class LoginServlet extends HttpServlet {
             }
         }
     }
-
-
 }
