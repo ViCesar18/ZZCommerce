@@ -113,13 +113,6 @@ public class AdicionarProdutoServlet extends HttpServlet {
 
     if (produtoDAO.inserir(produto)) {
       response.sendRedirect(request.getContextPath() + "/allProduto");
-
-      try {
-        Thread.sleep(3000);
-      } catch (InterruptedException e) {
-        throw new ServletException(e);
-      }
-
     } else {
       String destPage = "register.jsp";
 
