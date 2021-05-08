@@ -1,6 +1,6 @@
 package com.uel.ZZCommerce.controller;
  
-import com.uel.ZZCommerce.dao.ContatoDAO;
+import com.uel.ZZCommerce.dao.UserDAO;
 import com.uel.ZZCommerce.model.Contato;
 
 import java.io.*;
@@ -32,8 +32,8 @@ public class RegisterServlet extends HttpServlet {
                 request.getParameter("observacao")
         );
          
-        ContatoDAO contatoDao = new ContatoDAO();
-        if(contatoDao.register(contato)) {
+        UserDAO userDao = new UserDAO();
+        if(userDao.register(contato)) {
         	String destPage = "index.jsp";
             
             String message = "Cadastro executado com sucesso!";

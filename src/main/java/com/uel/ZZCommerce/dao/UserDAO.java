@@ -5,11 +5,11 @@ import com.uel.ZZCommerce.model.Contato;
 
 import java.sql.*;
  
-public class ContatoDAO {
+public class UserDAO {
 	
-private Connection connection;
+	private Connection connection;
 	
-	public ContatoDAO() {
+	public UserDAO() {
 		this.connection = new ConnectionFactory().getConnection();
 	}
  

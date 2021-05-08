@@ -1,6 +1,6 @@
 package com.uel.ZZCommerce.controller;
  
-import com.uel.ZZCommerce.dao.ContatoDAO;
+import com.uel.ZZCommerce.dao.UserDAO;
 import com.uel.ZZCommerce.model.Contato;
 
 import java.io.*;
@@ -27,10 +27,10 @@ public class LoginServlet extends HttpServlet {
             case "/login":{
                 Contato contato = new Contato(request.getParameter("username"), request.getParameter("password"));
 
-                ContatoDAO contatoDao = new ContatoDAO();
+                UserDAO userDao = new UserDAO();
 
                 try {
-                    contato = contatoDao.checkLogin(contato);
+                    contato = userDao.checkLogin(contato);
 
                     if (contato.getId() != 0) {
                         if(request.getParameter("Test") == null) {
