@@ -1,67 +1,67 @@
 package com.uel.ZZCommerce.model;
 
 public class Produto {
-    private int id;
-    private String nome;
-    private double precoVenda;
-    private int quantidade;
-    private int idContato;
-    private String imagem;
-    private Contato contato;
+  private int id;
+  private String nome;
+  private double precoVenda;
+  private int quantidade;
+  private int idContato;
+  private String imagem;
+  private Contato contato;
 
-    public Contato getContato() {
-        return contato;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public void setContato(Contato contato) {
-        this.contato = contato;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public int getId() {
-        return id;
-    }
+  public String getNome() {
+    return nome;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-    public String getNome() {
-        return nome;
-    }
+  public double getPrecoVenda() {
+    return precoVenda;
+  }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+  public void setPrecoVenda(double precoVenda) {
+    this.precoVenda = precoVenda;
+  }
 
-    public double getPrecoVenda() {
-        return precoVenda;
-    }
+  public int getQuantidade() {
+    return quantidade;
+  }
 
-    public void setPrecoVenda(double precoVenda) {
-        this.precoVenda = precoVenda;
-    }
+  public void setQuantidade(int quantidade) {
+    this.quantidade = quantidade;
+  }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
+  public int getIdContato() {
+    return idContato;
+  }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
-    }
+  public void setIdContato(int idContato) {
+    this.idContato = idContato;
+  }
 
-    public int getIdContato() {
-        return idContato;
-    }
+  public String getImagem() {
+    return imagem;
+  }
 
-    public void setIdContato(int idContato) {
-        this.idContato = idContato;
-    }
+  public void setImagem(String imagem) {
+    this.imagem = imagem;
+  }
 
-    public String getImagem() {
-        return imagem;
-    }
+  public Contato getContato() {
+    return contato;
+  }
 
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
-    }
+  public void setContato(Contato contato) {
+    this.contato = contato;
+  }
 }

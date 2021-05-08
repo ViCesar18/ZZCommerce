@@ -12,67 +12,67 @@ import java.util.logging.Logger;
 
 public class ProdutoDAO {
 
-    private Connection connection;
+  private Connection connection;
 
-    public ProdutoDAO() {
-        this.connection = new ConnectionFactory().getConnection();
+  public ProdutoDAO() {
+    this.connection = new ConnectionFactory().getConnection();
+  }
+
+  public boolean inserir(Produto produto) {
+    String sql =
+        "INSERT INTO produto (NOME, PRECOVENDA, QUANTIDADE, ID_CONTATO, IMAGEM) VALUES (?, ?, ?, ?, ?)";
+
+    try {
+      PreparedStatement statement = connection.prepareStatement(sql);
+
+      statement.setString(1, produto.getNome());
+      statement.setString(2, Double.toString(produto.getPrecoVenda()));
+      statement.setString(3, Integer.toString(produto.getQuantidade()));
+      statement.setString(4, Integer.toString(produto.getIdContato()));
+      statement.setString(5, produto.getImagem());
+
+      statement.execute();
+
+      statement.close();
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
     }
 
-    public boolean registerProduto (Produto produto) {
-        String sql = "INSERT INTO produto (NOME, PRECOVENDA, QUANTIDADE, ID_CONTATO, IMAGEM) VALUES (?, ?, ?, ?, ?)";
+    return true;
+  }
 
-        try {
-            PreparedStatement statement = connection.prepareStatement(sql);
+  public List<Produto> buscarPorNome() throws SQLException {
+    List<Produto> produtos = new ArrayList<>();
+    String sql =
+        "SELECT produto.id, produto.nome, precovenda, quantidade, id_contato, imagem, contato.nome as nome_contato "
+            + "FROM commerce.produto "
+            + "JOIN commerce.contato ON contato.id = produto.id_contato "
+            + "ORDER BY id";
 
-            statement.setString(1, produto.getNome());
-            statement.setString(2, Double.toString(produto.getPrecoVenda()));
-            statement.setString(3, Integer.toString(produto.getQuantidade()));
-            statement.setString(4, Integer.toString(produto.getIdContato()  ));
-            statement.setString(5, produto.getImagem());
+    try (PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet result = statement.executeQuery()) {
+      while (result.next()) {
+        Produto produto = new Produto();
+        Contato contato = new Contato();
 
-            statement.execute();
+        contato.setNome(result.getString("nome_contato"));
 
-            statement.close();
-        }
-        catch(SQLException e) {
-            throw new RuntimeException(e);
-        }
+        produto.setId(result.getInt("id"));
+        produto.setNome(result.getString("nome"));
+        produto.setPrecoVenda(result.getDouble("precovenda"));
+        produto.setQuantidade(result.getInt("quantidade"));
+        produto.setIdContato(result.getInt("id_contato"));
+        produto.setImagem(result.getString("imagem"));
+        produto.setContato(contato);
 
-        return true;
+        produtos.add(produto);
+      }
+    } catch (SQLException e) {
+      Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, "DAO", e);
+
+      throw new SQLException("Erro ao listar produtos.");
     }
 
-    public List<Produto> allProduto () throws SQLException{
-        List<Produto> produtos = new ArrayList<>();
-        String sql = "SELECT produto.id, produto.nome, precovenda, quantidade, id_contato, imagem, contato.nome as nome_contato " +
-                "FROM commerce.produto " +
-                "JOIN commerce.contato ON contato.id = produto.id_contato " +
-                "ORDER BY id";
-
-        try (PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet result = statement.executeQuery()) {
-                while(result.next()) {
-                    Produto produto = new Produto();
-                    Contato contato = new Contato();
-
-                    contato.setNome(result.getString("nome_contato"));
-
-                    produto.setId(result.getInt("id"));
-                    produto.setNome(result.getString("nome"));
-                    produto.setPrecoVenda(result.getDouble("precovenda"));
-                    produto.setQuantidade(result.getInt("quantidade"));
-                    produto.setIdContato(result.getInt("id_contato"));
-                    produto.setImagem(result.getString("imagem"));
-                    produto.setContato(contato);
-
-
-                    produtos.add(produto);
-                }
-        } catch(SQLException e) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, "DAO", e);
-
-            throw new SQLException("Erro ao listar produtos.");
-        }
-
-        return produtos;
-    }
+    return produtos;
+  }
 }
