@@ -18,7 +18,7 @@
     <body>
         <div class="main-container">
             <header>
-                <a href="${pageContext.servletContext.contextPath}/allProduto">
+                <a href="${pageContext.servletContext.contextPath}/mostrarProdutos">
                     <img src="${pageContext.servletContext.contextPath}/assets/img/zz-logo.png">
                 </a>
                 <span><strong>Olá, ${loggedInUser.username}!</strong></span>
@@ -36,7 +36,7 @@
                 <h1>Encontre seu produto</h1>
                 <form
                         class="form"
-                        action="${pageContext.servletContext.contextPath}/pesquisa"
+                        action="${pageContext.servletContext.contextPath}/buscarPorNome"
                         method="post"
                 >
                     <input type="text" placeholder="Procure produtos de seu interesse..." required class="form-control" id="inputPesquisa" name="pesquisa">

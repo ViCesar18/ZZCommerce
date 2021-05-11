@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
                         request.setAttribute("messagemFalha", "Usuário ou Senha inválidos!");
                     }
 
-                    response.sendRedirect(request.getContextPath() + "/allProduto");
+                    response.sendRedirect(request.getContextPath() + "/mostrarProdutos");
                 } catch (SQLException | ClassNotFoundException ex) {
                     throw new ServletException(ex);
                 }
